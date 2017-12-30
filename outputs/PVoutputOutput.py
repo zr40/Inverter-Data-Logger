@@ -18,7 +18,7 @@ class PVoutputOutput(PluginLoader.Plugin):
         timezoner = timezone('Europe/Amsterdam')
         now = datetime.now(timezoner)
 
-        if (now.minute % 5) == 0:  # Only run at every 5 minute interval
+        if (now.minute % 5) == 0 and now.second < 9:  # Only run once every 5 minute interval
 
             sys_id = 'sysid-'+msg.id
             if not self.config.has_option('pvout', sys_id):
